@@ -21,5 +21,25 @@ async function getData() {
 
 // Process the data here
 function processData(data) {
+    const pokemonContainer = document.getElementById('pokemonContainer');
+    pokemonContainer.innerHTML = ''; // Clear previous content
+
+    const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+    const dexNumber = data.id;
+    const imgSrc = data.sprites.front_default;
+    const types = data.types.map(typeInfo => typeInfo.type.name).join(', ');
+    const height = data.height / 10; // Convert decimeters to meters
+    const weight = data.weight / 10; // Convert hectograms to kilograms
+
+    pokemonContainer.innerHTML = `
+        <h2>${name}</h2>
+        <p><strong>#${dexNumber}</strong></p>
+        <img src="${imgSrc}" alt="${name}">
+        <p><strong>Type:</strong> ${types}</p>
+        <p><strong>Height:</strong> ${height} m</p>
+        <p><strong>Weight:</strong> ${weight} kg</p>
+    `;
+
+    // Log the entire data object to the console
     console.log(data);
 };
