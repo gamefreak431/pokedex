@@ -1,9 +1,78 @@
 body {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #F44336;
+    color: #FFFFFF;
 }
 
+header h1 {
+    font-size: clamp(2rem, calc(4vw + 1rem), 4rem);
+}
+
+main {
+    flex-grow: 1;
+}
+
+#searchInput {
+    padding: 5px 10px;
+    font-size: clamp(0.8rem, calc(1vw + 0.5rem), 1.2rem);
+    border: #BDBDBD 1px solid;
+    border-radius: 1000px;
+    text-align: center;
+    background-image: url(Images/search_16dp_757575_FILL0_wght400_GRAD0_opsz20.svg);
+    background-position: 5px center;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    background-color: #FFFFFF;
+    color: #212121;
+
+}
+
+#searchButton {
+    background-color: #448AFF;
+    color: #FFFFFF;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: clamp(0.8rem, calc(1vw + 0.5rem), 1.2rem);
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: clamp(0.8rem, calc(1vw + 0.5rem), 1.2rem);
+    background-color: #FFFFFF;
+    color: #212121;
+    width: 100vw;
+    border-top: #BDBDBD 1px solid;
+}
+
+footer a{
+    color: #757575;
+    text-decoration: none;
+}
+
+@media (max-width: 700px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer p {
+        margin: 0.5rem 0;
+    }
+}
