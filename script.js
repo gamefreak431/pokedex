@@ -23,6 +23,8 @@ async function getData() {
 function processData(data) {
     const pokemonContainer = document.getElementById('pokemonContainer');
     pokemonContainer.innerHTML = ''; // Clear previous content
+    pokemonContainer.style.border = '#BDBDBD 1px solid';
+    pokemonContainer.style.borderRadius = '10px';
 
     const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
     const dexNumber = data.id;
@@ -32,14 +34,28 @@ function processData(data) {
     const weight = data.weight / 10; // Convert hectograms to kilograms
 
     pokemonContainer.innerHTML = `
-        <h2>${name}</h2>
-        <p><strong>#${dexNumber}</strong></p>
-        <img src="${imgSrc}" alt="${name}">
-        <p><strong>Type:</strong> ${types}</p>
-        <p><strong>Height:</strong> ${height} m</p>
-        <p><strong>Weight:</strong> ${weight} kg</p>
+        <div class="pokemon-header">
+            <h2>${name}</h2>
+            <h2><strong>#${dexNumber}</strong></h2>
+        </div>
+        <div class="pokemon-image">
+            <img src="${imgSrc}" alt="${name}">
+        </div>
+        <div class="pokemon-info">
+            <p><strong>Type:</strong> ${types}</p>
+            <p><strong>Height:</strong> ${height} m</p>
+            <p><strong>Weight:</strong> ${weight} kg</p>
+        </div>
     `;
 
     // Log the entire data object to the console
     console.log(data);
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("searchInput").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            getData();
+        }
+    });
+});
